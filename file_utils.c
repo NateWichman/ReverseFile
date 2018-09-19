@@ -48,7 +48,7 @@ This function writes a string to a file.
      of the text.
 @return an error code
 **************************************************************/
-int file_write(char* filename, char** buffer, int size){
+int file_write(char* filename, char* buffer, int size){
 	/** File Pointer **/
 	FILE* fp;
 	
@@ -56,13 +56,7 @@ int file_write(char* filename, char** buffer, int size){
 	fp = fopen(filename, "w");
 
 	//writing the string to the file.
-	fwrite(*buffer, size, 1, fp);
+	fwrite(buffer, size, 1, fp);
 	
-	/* I do not know why this function does not take just
-	 * a charachter pointer instead of a double pointer.
-	 * I just immediatly dereference the char** buffer
-	 * into a single pointer, as seen above in the param
-	 * for fwrite (*buffer). 
-	 * */
 	return 0;
 }
