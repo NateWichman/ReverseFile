@@ -33,7 +33,7 @@ int main(int argc, char** argv){
 	}
 
 	//Writing the reversed "string" to the same filename
-	file_write(filename, &reverseBuf, size);
+	file_write(filename, reverseBuf, size);
 
 	//Freeing up memeory as to not cause a memory leak
 	free(buffer);
