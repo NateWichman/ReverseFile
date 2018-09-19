@@ -15,7 +15,7 @@ Header file for the file_utils.c file
 int read_file(char* filename, char** buffer);
 
 /** writes a charachter array into a file **/
-int file_write(char* filename, char** buffer, int size);
+int file_write(char* filename, char* buffer, int size);
 
 
 #endif /* defined(File_Utils) */
