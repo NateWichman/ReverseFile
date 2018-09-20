@@ -36,7 +36,10 @@ int main(int argc, char** argv){
 		fprintf(stderr, "TERMINATING FAILED PROGRAM DUE TO NO FILE FOUND\n");
 		return -1; 
 	}
+	
+	//Allocating memory for a new string to put the reverse of the file's text into
 	reverseBuf = (char*) malloc(sizeof(char) * size);
+	
 	//Setting reverseBuf equal to the reverse of buffer's charachters
 	for(int i = 0; i < size; i++){
 		reverseBuf[i] = buffer[size - i - 1];
