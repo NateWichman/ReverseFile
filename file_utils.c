@@ -24,13 +24,13 @@ int read_file(char* filename, char** buffer){
 	//Opening the file to read
 	fp = fopen(filename, "r");
 
-	//checking for errors
+	//checking if the file exists, if not throwing an error
 	if(fp == NULL){
 		return -1; 
 		fprintf(stderr, "FILE NOT FOUND");
 	}
 
-	//This code block was provided by Prof. Woodring 
+	//This code block was provided by Prof. Woodring, finds the size of the file
 	struct stat st;
 	stat(filename, &st);
 	int size = st.st_size;
