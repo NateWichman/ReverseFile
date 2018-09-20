@@ -15,7 +15,7 @@ into a file.
 Reads text from a file into a "string" (charachter array)
 
 @param the file's name to be read, and a string to be read into
-@return an integer for errors, returns 0 if all went well.
+@return -1 for errors, otherwise the size of the file
 ******************************************************************/
 int read_file(char* filename, char** buffer){
 	/** File Pointer **/
@@ -26,19 +26,26 @@ int read_file(char* filename, char** buffer){
 
 	//checking for errors
 	if(fp == NULL){
-		return 1; 
+		return -1; 
+		fprintf(stderr, "FILE NOT FOUND");
 	}
 
 	//This code block was provided by Prof. Woodring 
 	struct stat st;
 	stat(filename, &st);
 	int size = st.st_size;
+	
+
+	//Now we must dynamically allocate the file's size in memory to the
+	//output string. (Character array)
+	*buffer = (char*) malloc(sizeof(char) * size);
 
 	//Reading in text from the file into the string at **buffer's location
 	//(Actuall another pointer, but can be treated like a charachter array
 	fread(*buffer, size, 1, fp);
 	
-	return 0;
+	//returning the size of the file
+	return size;
 }
 
 /**************************************************************
@@ -48,7 +55,7 @@ This function writes a string to a file.
      of the text.
 @return an error code
 **************************************************************/
-int file_write(char* filename, char* buffer, int size){
+int write_file(char* filename, char* buffer, int size){
 	/** File Pointer **/
 	FILE* fp;
 	
